@@ -1,0 +1,31 @@
+{
+  "name": "whatsapp-ticket-bot",
+  "version": "1.0.0",
+  "description": "WhatsApp Business Bot for ticket processing with OCR and AI",
+  "type": "module",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "node --watch src/index.js",
+    "db:migrate": "node src/database/migrate.js",
+    "db:reset": "dropdb whatsapp_bot && createdb whatsapp_bot && npm run db:migrate",
+    "logs": "tail -f combined.log",
+    "logs:error": "tail -f error.log",
+    "pm2:start": "pm2 start ecosystem.config.json",
+    "pm2:stop": "pm2 stop whatsapp-bot",
+    "pm2:restart": "pm2 restart whatsapp-bot",
+    "pm2:logs": "pm2 logs whatsapp-bot",
+    "pm2:monit": "pm2 monit"
+  },
+  "keywords": ["whatsapp", "webhook", "ocr", "ai", "ticket-processing"],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "dotenv": "^16.3.1",
+    "pg": "^8.11.3",
+    "axios": "^1.6.2",
+    "openai": "^4.24.1",
+    "winston": "^3.11.0"
+  }
+}
